@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch Admins</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<body>
+<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<div id="app">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+            <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(admin, index) in admins">
+                <th scope="row">{{admin.id}}</th>
+                <td>{{admin.username}}</td>
+                <td>{{admin.password}}</td>
+                <td>{{admin.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            admins:[]//后台的json数据存储在该model中
+        },
+        methods:{}
+    });
+
+    $.ajax({
+        url: "/admin/hello",
+        type: "GET",
+        dataType: "json",
+        success:function (results){
+            console.log(results);
+            //将后台的json数据赋值到vue的data:{admin[]}数组中
+            app.admins = results;
+        }
+    })
+</script>
+
+</body>
+</html>
