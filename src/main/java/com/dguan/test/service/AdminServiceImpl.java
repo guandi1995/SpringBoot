@@ -41,7 +41,6 @@ public class AdminServiceImpl implements AdminService{
         List<Admin> admins = adminMapper.fetchAdmins();
         //新建PageInfo,将admins参数传递到有参构造中
         PageInfo<Admin> adminPageInfo = new PageInfo<>(admins);
-        //返回PageInfo类型
         return adminPageInfo;
     }
 }
