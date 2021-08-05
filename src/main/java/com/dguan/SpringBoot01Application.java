@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.dguan.mybatis_plus.mapper")
 @MapperScan("com.dguan.test.mapper")
 public class SpringBoot01Application {
 

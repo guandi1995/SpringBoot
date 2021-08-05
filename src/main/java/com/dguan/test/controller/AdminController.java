@@ -3,7 +3,7 @@ package com.dguan.test.controller;
 import com.dguan.test.pageHelper.Page;
 import com.dguan.test.pojo.Admin;
 import com.dguan.test.service.AdminService;
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,12 +36,12 @@ public class AdminController {
      * @param count
      * @return
      */
-    @GetMapping(value = "/{currentPage}/{count}")
-    public PageInfo<Admin> fetchByPage(@PathVariable("currentPage") Integer currentPage,
-                                 @PathVariable("count") Integer count){
-        Page page = new Page();
-        page.setCurrentPage(currentPage);
-        page.setCount(count);
-        return adminService.fetchAdminsByPage(page);
-    }
+//    @GetMapping(value = "/{currentPage}/{count}")
+//    public PageInfo<Admin> fetchByPage(@PathVariable("currentPage") Integer currentPage,
+//                                 @PathVariable("count") Integer count){
+//        Page page = new Page();
+//        page.setCurrentPage(currentPage);
+//        page.setCount(count);
+//        return adminService.fetchAdminsByPage(page);
+//    }
 }
