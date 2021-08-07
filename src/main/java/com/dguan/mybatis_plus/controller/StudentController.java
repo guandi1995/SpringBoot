@@ -3,6 +3,7 @@ package com.dguan.mybatis_plus.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dguan.mybatis_plus.pojo.PageHelper;
+import com.dguan.mybatis_plus.pojo.ReturnResult;
 import com.dguan.mybatis_plus.pojo.Student;
 import com.dguan.mybatis_plus.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +73,13 @@ public class StudentController {
         student.setGender("FeMale");
         student.setMajor_id(2);
         return studentService.insertStudent(student);
+    }
+
+    /**
+     * 异常处理
+     */
+    @RequestMapping("/dataException")
+    public ReturnResult fetchStudentsException(){
+        return studentService.fetchStudentsException();
     }
 }

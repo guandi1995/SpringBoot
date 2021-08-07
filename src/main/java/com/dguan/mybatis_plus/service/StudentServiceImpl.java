@@ -3,8 +3,10 @@ package com.dguan.mybatis_plus.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dguan.mybatis_plus.exception.DataNotFoundException;
 import com.dguan.mybatis_plus.mapper.StudentMapper;
 import com.dguan.mybatis_plus.pojo.PageHelper;
+import com.dguan.mybatis_plus.pojo.ReturnResult;
 import com.dguan.mybatis_plus.pojo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,6 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<Student> fetchStudents() {
         List<Student> students = studentMapper.selectList(null);
-        System.out.println(students);
         return students;
     }
 
@@ -69,4 +70,15 @@ public class StudentServiceImpl implements StudentService{
         return studentMapper.insert(student);
     }
 
+    /**
+     * 异常处理
+     * @return
+     */
+    @Override
+    public ReturnResult fetchStudentsException() {
+        Student student = studentMapper.selectById(100);
+        if (student == null)
+            throw new DataNotFoundException();
+        return new ReturnResult(200, "fetch student successfully", student);
+    }
 }
